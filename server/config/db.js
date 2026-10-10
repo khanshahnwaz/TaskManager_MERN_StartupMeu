@@ -1,12 +1,23 @@
+
 const mongoose = require('mongoose');
 
-// Connects to MongoDB. If it fails there's no point running the API, so we exit.
+let connectionPromise;
+
 module.exports = async function connectDB() {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('MongoDB connected');
-  } catch (err) {
-    console.error('Mongo connection failed:', err.message);
-    process.exit(1);
+  if (mongoose.connection.readyState === 1) {
+    return mongoose.connection;
   }
+
+  if (!connectionPromise) {
+    connectionPromise = mongoose
+      .connect(process.env.MONGO_URI)
+      .then(console.log("Mongo DB Connected"))
+      .catch((error) => {
+        console.log("Failed to connect mongo DB")
+        connectionPromise = null;
+        throw error;
+      });
+  }
+
+  return connectionPromise;
 };
