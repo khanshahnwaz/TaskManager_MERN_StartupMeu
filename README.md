@@ -55,8 +55,8 @@ taskflow/
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
-cd taskflow
+git clone git@github.com:khanshahnwaz/TaskManager_MERN_StartupMeu.git
+cd TaskManager_MERN_StartupMeu
 ```
 
 ### 2. Configure the backend
@@ -70,7 +70,7 @@ Copy `.env.example` to `.env` and configure the environment variables:
 
 ```env
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secure_jwt_secret
+JWT_SECRET=your_jwt_secret
 ```
 
 Add any other environment variables required by your implementation.
@@ -122,23 +122,28 @@ The task listing endpoint supports the `status`, `priority`, and `search` query 
 
 ## AI-Assisted Development
 
-**AI tool used:** 
+## AI Tool Used
 
-**Development experience:**  
+**Tool used:** Code0
 
+## AI Development Experience
+
+I used an AI development tool as an assistant while building TaskFlow, a task management application using the MERN stack. I worked on both the React frontend and the Express backend, including authentication, task management, database models, and API integration.
+
+The main thing I focused on was making the different parts of the application work together. For example, the frontend needs to send the JWT with protected API requests, the backend needs to verify the token, and the database queries need to ensure that each user can access only their own tasks.
+
+I also paid attention to handling loading states, displaying errors, validating task data, and keeping the dashboard updated after creating, editing, deleting, or changing the status of a task. I reviewed the generated code against the application's requirements rather than treating AI-generated suggestions as automatically correct.
 
 ### Tasks Where I Used the AI Tool
 
-1. **Frontend development:** 
+1. **Component development:** Worked on reusable React components for authentication, task creation and editing, task cards, and the dashboard. The login and registration screens share an authentication component, while the task form supports both creating and editing tasks.
 
-2. **API development:** 
+2. **API creation:** Worked on Express endpoints for registration, login, retrieving the current user, and creating, listing, updating, and deleting tasks. JWT middleware protects the task routes and identifies the authenticated user.
 
-3. **Debugging:** 
+3. **Debugging and error handling:** Worked on handling API errors, restoring authentication after a page refresh, and keeping the frontend state synchronized with backend changes. The application displays error messages when requests fail and uses a loading state during authentication.
 
-4. **Database integration:** 
+4. **Database integration:** Integrated MongoDB using Mongoose models for users and tasks. Added password hashing with bcrypt, schema validation, task ownership through user references, and filtering by task status, priority, and title.
 
-5. **Refactoring and testing:** 
-
----
+5. **Code organization and refactoring:** Organized the frontend into pages, reusable components, an authentication context, and a shared API helper. Configured the Vite development proxy to forward `/api` requests to Express and centralized request headers, JSON serialization, and error handling.
 
 
